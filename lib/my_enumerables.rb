@@ -13,6 +13,7 @@ module Enumerable
     end
     false
   end
+
   def my_count(member = nil)
     count = 0
     if block_given?
@@ -27,6 +28,24 @@ module Enumerable
       end
     end
     count
+  end
+
+  def my_each_with_index
+    return self.to_enum unless block_given?
+
+    idx = 0
+    self.my_each do |item|
+      yield(item, idx)
+      idx += 1
+    end
+    self
+  end
+
+  def my_inject(acc = 0)
+    self.each do |item|
+      acc = yield(acc, item)
+    end
+    acc
   end
 end
 
