@@ -10,6 +10,10 @@ RSpec.describe Enumerable do
       it 'returns the size of the enumerable' do
         expect(enumerable.my_count).to eq enumerable.size
       end
+      # added this one myself
+      it 'returns the count of elements in argument' do
+        expect(enumerable.my_count(1)).to eq 2
+      end
     end
 
     context 'when given a block' do
