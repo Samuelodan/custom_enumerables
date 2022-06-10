@@ -42,10 +42,33 @@ module Enumerable
   end
 
   def my_inject(acc = 0)
-    self.each do |item|
+    self.my_each do |item|
       acc = yield(acc, item)
     end
     acc
+  end
+
+  def my_map
+    result = []
+    self.my_each do |item|
+      result << yield(item)
+    end
+    result
+  end
+
+  def my_none?
+    self.my_each do |item|
+      return false if yield(item)
+    end
+    true
+  end
+
+  def my_select
+    result = []
+    self.my_each do |item|
+      result << item if yield(item)
+    end
+    result
   end
 end
 
