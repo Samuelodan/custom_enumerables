@@ -81,8 +81,8 @@ class Array
   def my_each
     return self.to_enum unless block_given?
 
-    for i in self
-      yield i
+    self.length.times do |i|
+      yield self[i]
     end
     self
   end
